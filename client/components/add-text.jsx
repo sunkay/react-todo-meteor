@@ -30,6 +30,14 @@ AddText = React.createClass({
 
   handleAddClick: function(){
     console.log(this.state.text);
+    this.setState({
+      text: ''
+    });
+    Tasks.insert({
+      text: this.state.text,
+      done: false,
+      createdAt: new Date()
+    });
   },
 
   handleTextChange: function(event){

@@ -22,7 +22,12 @@ var App = React.createClass({
     },
 
     renderTasks(){
-      return this.data.tasks;
+      return this.data.tasks.map(function(task){
+        return <Task
+          task={task}
+          key={task._id}
+        ></Task>
+      });
     }
 });
 
