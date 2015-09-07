@@ -13,6 +13,7 @@ AddTask = React.createClass({
         placeholder="Type to add new tasks"
         className="form-control"
         value={this.state.text}
+        onKeyDown={this.handleKeyEnter}
         onChange={this.handleTextChange}
         >
       </input>
@@ -26,6 +27,11 @@ AddTask = React.createClass({
         </button>
       </span>
     </div>
+  },
+
+  handleKeyEnter: function(e){
+    if(e.which === 13)
+      this.handleAddClick();
   },
 
   handleAddClick: function(){
