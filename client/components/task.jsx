@@ -8,30 +8,36 @@ Task = React.createClass({
   },
 
   render: function(){
-    return <div className="input-group">
-        <span className="input-group-addon">
-          <input
-            type="checkbox"
-            checked={this.state.done}
-            onChange={this.handleDoneChange}
+    if(!this.props.task.archive){
+      return <div className="input-group">
+          <span className="input-group-addon">
+            <input
+              type="checkbox"
+              checked={this.state.done}
+              onChange={this.handleDoneChange}
+              />
+          </span>
+          <input type="text"
+            disabled={this.state.done}
+            className="form-control"
+            onChange={this.handleTextChange}
+            value={this.state.text}
             />
-        </span>
-        <input type="text"
-          disabled={this.state.done}
-          className="form-control"
-          onChange={this.handleTextChange}
-          value={this.state.text}
-          />
-        <span className="input-group-btn">
-          {this.changesButtons()}
-          <button
-            className="btn btn-default"
-            onClick={this.handleDeleteClick}
-          >
-            Delete
-          </button>
-        </span>
+          <span className="input-group-btn">
+            {this.changesButtons()}
+            <button
+              className="btn btn-default"
+              onClick={this.handleDeleteClick}
+            >
+              Delete
+            </button>
+          </span>
+        </div>
+    } else {
+      return <div>
+        
       </div>
+    }
   },
   // adds Undo & Save buttons only during modifying text
   changesButtons(){

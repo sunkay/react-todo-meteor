@@ -1,5 +1,5 @@
 
-AddText = React.createClass({
+AddTask = React.createClass({
   getInitialState: function(){
       return {
         text: ''
@@ -36,6 +36,7 @@ AddText = React.createClass({
     Tasks.insert({
       text: this.state.text,
       done: false,
+      archive: false,
       createdAt: new Date()
     });
   },

@@ -15,10 +15,32 @@ var App = React.createClass({
           <h2 className="text-center">
             To-Do List
           </h2>
-          <AddText />
+          <AddTask />
           {this.renderTasks()}
+          <div className="text-center">
+            <hr />
+            <button
+              type="button"
+              className="btn btn-default "
+              onClick={this.handleClearCompleteClick}
+              >
+              Clear Complete
+            </button>
+          </div>
         </div>
       </div>
+    },
+    handleClearCompleteClick: function(event){
+      this.data.tasks.map(function(task){
+        if(task.done){
+          console.log("removing: " + task._id);
+          //Tasks.remove(task._id);
+          // archive instead of removing
+          Tasks.update(task._id, {
+            $set: {archive: true}
+          });
+        }
+      });
     },
 
     renderTasks(){
