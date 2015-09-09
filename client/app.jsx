@@ -13,7 +13,7 @@ var App = React.createClass({
       return <div className="row panel panel-default">
         <div className="col-md-8 col-md-offset">
           <h2 className="text-center">
-            To-Do List
+            To-Do List - Deployed to meteor
           </h2>
           <AddTask />
           {this.renderTasks()}
